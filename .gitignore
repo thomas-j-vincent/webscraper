@@ -1,0 +1,8 @@
+.env
+.env*
+.vscode/
+driverpagesource.csv
+oceanhero_images.csv
+PyWhatKit_DB.txt
+*.csv
+*.txt

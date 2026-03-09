@@ -1,0 +1,9 @@
+body{
+    background-color:white;
+}
+div {
+    background-color: gainsboro;
+    border: 5px solid rgb(181, 181, 181);
+    border-radius: 15px;
+
+}
