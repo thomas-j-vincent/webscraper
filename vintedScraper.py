@@ -37,14 +37,8 @@ exclude_keywords = ["vest","button","blazer","skirt", "jean"]
 file_path = filePath
 marker = "<!-- GENERATED CONTENT BELOW -->"
 website = "index.html"
-
-with open("index.html", "a", encoding="utf-8") as f:
-    f.write(f"""
-        <div>
-        last updated: {datetime.datetime.now()}
-        </div>
-        <br></br>
-    """)
+date = datetime.datetime.now()
+print(date)
 
 with open(file_path, "r") as file:
     lines = file.readlines()
@@ -57,6 +51,13 @@ for line in lines:
 
 with open(file_path, "w") as file:
     file.writelines(kept_lines)
+
+with open("index.html", "a", encoding="utf-8") as f:
+    f.write(f"""
+        <div>
+        last updated: {date.strftime("%d/%m/%Y %H:%M:%S")}</div>
+        <br></br>
+    """)
 
 try:
     with open("vintedItems.csv", "r") as seenItems:
