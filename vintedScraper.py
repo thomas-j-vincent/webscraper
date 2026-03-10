@@ -7,6 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.edge.options import Options
 from dotenv import load_dotenv
 import pywhatkit
+import datetime
 import time
 import random
 import csv
@@ -40,7 +41,7 @@ website = "index.html"
 with open("index.html", "a", encoding="utf-8") as f:
     f.write(f"""
         <div>
-        last updated {time.now()}
+        last updated: {datetime.datetime.now()}
         </div>
         <br></br>
     """)
