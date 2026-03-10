@@ -35,7 +35,15 @@ include_keywords = ["jumper","hoodie","shirt","t-shirt","polo","tshirt","sweater
 exclude_keywords = ["vest","button","blazer","skirt", "jean"]
 file_path = filePath
 marker = "<!-- GENERATED CONTENT BELOW -->"
-website = "vintedItems.html"
+website = "index.html"
+
+with open("index.html", "a", encoding="utf-8") as f:
+    f.write(f"""
+        <div>
+        last updated {time.now()}
+        </div>
+        <br></br>
+    """)
 
 with open(file_path, "r") as file:
     lines = file.readlines()
@@ -96,7 +104,7 @@ for title, link ,image_url in data:
         saveLine = f"\n{title}@{image_url}@{link}"
         saveFile.write(saveLine)
     send.append(link)
-    with open("vintedItems.html", "a", encoding="utf-8") as f:
+    with open("index.html", "a", encoding="utf-8") as f:
         f.write(f"""
             <div>
             <tr>
@@ -106,8 +114,6 @@ for title, link ,image_url in data:
             </tr>
             </div>
             <br></br>
-
-
         """)
 print(send)
 '''pywhatkit.sendwhatmsg_instantly(
