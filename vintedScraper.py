@@ -33,7 +33,7 @@ data = []
 send = []
 seen_links = set()
 include_keywords = ["jumper","hoodie","shirt","t-shirt","polo","tshirt","sweater","sweatshirt","long","knit","top"]
-exclude_keywords = ["vest","button","blazer","skirt", "jean"]
+exclude_keywords = ["vest","button","blazer","skirt", "jean", "shorts"]
 file_path = filePath
 marker = "<!-- GENERATED CONTENT BELOW -->"
 website = "index.html"
@@ -117,11 +117,11 @@ for title, link ,image_url in data:
             </div>
             <br></br>
         """)
-print(send)
-'''pywhatkit.sendwhatmsg_instantly(
+#print(send)
+pywhatkit.sendwhatmsg_instantly(
     phoneNumber,
     website
-)'''
+)
 
 print("hello")
 input("Press Enter to close the browser...")
