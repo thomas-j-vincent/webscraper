@@ -1,26 +1,23 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
-import csv
 import os
 
 load_dotenv()
 
 servicePath = os.getenv("servicePath")
-
 options = Options()
 options.add_argument("--start-maximized")
 service = Service(servicePath)
 driver = webdriver.Edge(service=service, options=options)
 
-driver.get ("https://oceanhero.today/images?q=person+holding+one+finger+up")
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+driver.get("https://oceanhero.today/images?q=person+holding+one+finger+up")
 
 WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.CSS_SELECTOR,".object-cover"))
@@ -28,7 +25,7 @@ WebDriverWait(driver, 10).until(
 
 results = []
 content = driver.page_source
-print(len(content))
+#print(len(content))
 soup = BeautifulSoup(content, "html.parser")
 driver.quit()
 
