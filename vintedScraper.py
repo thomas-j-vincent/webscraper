@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 import pywhatkit
 import datetime
 import time
-import random
 import csv
 import os
 
@@ -30,17 +29,16 @@ driver = webdriver.Edge(service=service, options=options)
 driver.get ("https://www.vinted.co.uk/catalog?brand_ids[]=88&page=1&time=1772965691&size_ids[]=3&price_to=15.00&currency=GBP")
 wait = WebDriverWait(driver, 20)
 data = []
-send = []
+#send = []
 seen_links = set()
 include_keywords = ["jumper","hoodie","shirt","t-shirt","polo","tshirt","sweater","sweatshirt","long","knit","top"]
 exclude_keywords = ["vest","button","blazer","skirt", "jean", "shorts"]
-file_path = filePath
 marker = "<!-- GENERATED CONTENT BELOW -->"
 website = "index.html"
 date = datetime.datetime.now()
-print(date)
+#print(date)
 
-with open(file_path, "r") as file:
+with open(filePath, "r") as file:
     lines = file.readlines()
 
 kept_lines = []
@@ -49,11 +47,11 @@ for line in lines:
     if marker in line:
         break
 
-with open(file_path, "w") as file:
+with open(filePath, "w") as file:
     file.writelines(kept_lines)
 
-with open("index.html", "a", encoding="utf-8") as f:
-    f.write(f"""
+with open(filePath, "a", encoding="utf-8") as file:
+    file.write(f"""
         <div>
         last updated: {date.strftime("%d/%m/%Y %H:%M:%S")}</div>
         <br></br>
@@ -66,7 +64,7 @@ try:
             link = str(eachLine[2])
             seen_links.add(link)
 except FileNotFoundError:
-    print("no seen, starting fresh")
+    print("no file seen, starting fresh")
 
 try:
     cookies = wait.until(
@@ -105,7 +103,7 @@ for title, link ,image_url in data:
     with open("vintedItems.csv", "a") as saveFile:
         saveLine = f"\n{title}@{image_url}@{link}"
         saveFile.write(saveLine)
-    send.append(link)
+    #send.append(link)
     with open("index.html", "a", encoding="utf-8") as f:
         f.write(f"""
             <div>

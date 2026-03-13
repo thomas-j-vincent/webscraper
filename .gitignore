@@ -7,3 +7,4 @@ PyWhatKit_DB.txt
 *.csv
 *.txt
 !.env.example
+!requirements.txt
