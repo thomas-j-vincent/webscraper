@@ -17,6 +17,7 @@ load_dotenv()
 servicePath = os.getenv("servicePath")
 filePath = os.getenv("filePath")
 phoneNumber = os.getenv("phoneNumber")
+htmlLocation = os.getenv(htmlLocation)
 
 options = Options()
 options.add_argument("--start-maximized")
@@ -118,7 +119,7 @@ for title, link ,image_url in data:
 #print(send)
 pywhatkit.sendwhatmsg_instantly(
     phoneNumber,
-    website
+    htmlLocation
 )
 
 print("hello")
