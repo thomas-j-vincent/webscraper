@@ -104,3 +104,5 @@ we then send the website link to the phone number given in the .env.
 Hello is then printed to show we've reached the end and `input("Press Enter to close the browser...")` ensures the browser can stay open long enough to figure out what went wrong when it inevitably does (for me as the developer at least) - you can remove it. 
 
 ## InstagramScraper
+
+The instagram scraper does not work. It can accept cookies, enter your username and password but not click "log in". Apparently this is because I am using microsoft edge however, I do not have access to chrome.
